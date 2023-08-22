@@ -16,7 +16,7 @@ public class NumberGenerator {
     private String matchTarget(int target) {
         ++counter;
         if(this.target == target) {
-            return "1";
+            return "You guessed it right!";
         }else if(this.target < target){
                 return "Too High";
         }else{
@@ -26,7 +26,7 @@ public class NumberGenerator {
 
     public String match(int target) {
         if(hasExceeded()){
-            return "You have exceeded the try limit";
+            return "You have exceeded the try limit. Answer : " + getTarget() ;
         }
         return matchTarget(target);
     }
@@ -39,5 +39,13 @@ public class NumberGenerator {
         return target;
     }
 
+    public void resetGame() {
+        counter = 0;
+        createTarget();
+    }
+
+    public int getCounter() {
+        return counter;
+    }
 
 }
