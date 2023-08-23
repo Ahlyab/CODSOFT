@@ -2,11 +2,13 @@ import java.util.Random;
 public class NumberGenerator {
     private int counter;
     private Random random;
+    private int countWin;
 
     private int target;
     public NumberGenerator() {
         counter = 1;
         random = new Random();
+        countWin = 0;
     }
 
     public void createTarget() {
@@ -16,6 +18,7 @@ public class NumberGenerator {
     private String matchTarget(int target) {
         ++counter;
         if(this.target == target) {
+            ++countWin;
             return "You guessed it right!";
         }else if(this.target < target){
                 return "Too High";
@@ -47,5 +50,6 @@ public class NumberGenerator {
     public int getCounter() {
         return counter;
     }
+    public int getCountWin() {return countWin;}
 
 }
