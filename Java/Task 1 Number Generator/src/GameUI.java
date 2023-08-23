@@ -84,14 +84,16 @@ public class GameUI {
                 if(numberGenerator.getCounter() > 5) {
                     countTry.setText("You Lost");
                     submit.setEnabled(false);
-                }else{
-                    countTry.setText("Try : " + numberGenerator.getCounter());
                 }
-                try{
+
+                try {
                     activity.setText(numberGenerator.match(Integer.parseInt(input.getText().trim())));
                     score.setText("Score : " + numberGenerator.getCountWin());
-                }catch (NumberFormatException ex) {
-                    activity.setText("Enter number only");
+                } catch (NumberFormatException ex) {
+                        activity.setText("Enter number only");
+                }
+                if(countTry.getText() != "You Lost") {
+                    countTry.setText("Try : " + numberGenerator.getCounter());
                 }
             }
         });

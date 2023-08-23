@@ -17,20 +17,24 @@ public class NumberGenerator {
 
     private String matchTarget(int target) {
         ++counter;
+        String res = null;
         if(this.target == target) {
             ++countWin;
-            return "You guessed it right!";
+            res = "You guessed it right!";
         }else if(this.target < target){
-                return "Too High";
+                res =  "Too High";
         }else{
-            return "Too Low";
+            res =  "Too Low";
         }
+//        ++counter;
+        return res;
     }
 
     public String match(int target) {
         if(hasExceeded()){
             return "You have exceeded the try limit. Answer : " + getTarget() ;
         }
+//        ++counter;
         return matchTarget(target);
     }
 
@@ -43,7 +47,7 @@ public class NumberGenerator {
     }
 
     public void resetGame() {
-        counter = 0;
+        counter = 1;
         createTarget();
     }
 
