@@ -35,10 +35,14 @@ class MainApp(QMainWindow, ui):
 
     def removeClickedItem(self, item):
         index = self.list.row(item)
+        item.setSelected(False)
         self.list.takeItem(index)
 
     def addOnEnter(self):
-        self.addButtonCLicked()
+        if self.itemSelected == None:
+            self.addButtonCLicked()
+        else:
+            self.updateTask()
 
     def itemSelect(self, item):
         self.enableUpdateAndDeleteButton(True)
@@ -48,12 +52,16 @@ class MainApp(QMainWindow, ui):
     def deleteBtnClicked(self):
         self.removeClickedItem(self.itemSelected)
         self.enableUpdateAndDeleteButton(False)
-
+        
 
     def updateTask(self):
-        self.itemSelected.setText(self.input.text())
-        self.input.setText("")
-        self.enableUpdateAndDeleteButton(False)
+        if(len(self.input.text()) > 0):
+            self.itemSelected.setText(self.input.text())
+            self.input.setText("")
+            self.enableUpdateAndDeleteButton(False)
+            self.input.setPlaceholderText("Enter your task.")
+        self.itemSelected.setSelected(False)
+
 
     def enableUpdateAndDeleteButton(self, flag: bool):
         self.deleteBtn.setEnabled(flag)
