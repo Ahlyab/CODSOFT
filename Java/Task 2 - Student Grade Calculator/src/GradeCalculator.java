@@ -62,15 +62,15 @@ public class GradeCalculator {
 
     public void calculateGrade() {
         if(percentage >= 90 && percentage <= 100){
-            percentage = 'A';
+            grade = 'A';
         }else if(percentage >= 80 && percentage < 90){
-            percentage = 'B';
+            grade = 'B';
         }else if(percentage >= 70 && percentage < 80){
-            percentage = 'C';
+            grade = 'C';
         }else if(percentage >= 60 && percentage < 70){
-            percentage = 'D';
+            grade = 'D';
         }else if(percentage < 60){
-            percentage = 'F';
+            grade = 'F';
         }
 
     }
