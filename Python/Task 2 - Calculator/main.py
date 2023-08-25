@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 import sys
 from PyQt5.QtWidgets import QAction
 from PyQt5.uic import loadUiType
+from PyQt5.QtGui import *
 
 ui, _ = loadUiType("calculator.ui")
 
@@ -24,6 +25,10 @@ class MainApp(QMainWindow, ui):
 
     def handleEvents(self):
         self.output.setDecMode()
+        palette = self.output.palette()
+        palette.setColor(palette.Dark, QColor(0, 0, 0))
+        # palette.setColor(palette.Dark, QColor(85, 85, 255))
+        self.output.setPalette(palette)
         self.btn1.clicked.connect(self.btn1Clicked)
         self.btn2.clicked.connect(self.btn2Clicked)
         self.btn3.clicked.connect(self.btn3Clicked)

@@ -15,6 +15,11 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(293, 356)
+        font = QtGui.QFont()
+        font.setKerning(True)
+        MainWindow.setFont(font)
+        MainWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.output = QtWidgets.QLCDNumber(self.centralwidget)
