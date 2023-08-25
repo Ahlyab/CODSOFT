@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>272</width>
+    <width>293</width>
     <height>356</height>
    </rect>
   </property>
@@ -14,12 +14,12 @@
    <string>Calculator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLCDNumber" name="ouput">
+   <widget class="QLCDNumber" name="output">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>251</width>
+      <width>271</width>
       <height>23</height>
      </rect>
     </property>
@@ -32,7 +32,7 @@
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -45,7 +45,7 @@
      <rect>
       <x>80</x>
       <y>50</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -58,7 +58,7 @@
      <rect>
       <x>150</x>
       <y>50</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -69,9 +69,9 @@
    <widget class="QPushButton" name="divide">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>229</x>
       <y>50</y>
-      <width>41</width>
+      <width>51</width>
       <height>51</height>
      </rect>
     </property>
@@ -82,9 +82,9 @@
    <widget class="QPushButton" name="multiply">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>230</x>
       <y>120</y>
-      <width>41</width>
+      <width>50</width>
       <height>51</height>
      </rect>
     </property>
@@ -97,7 +97,7 @@
      <rect>
       <x>80</x>
       <y>120</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -110,7 +110,7 @@
      <rect>
       <x>10</x>
       <y>120</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -123,7 +123,7 @@
      <rect>
       <x>150</x>
       <y>120</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -134,9 +134,9 @@
    <widget class="QPushButton" name="minus">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>230</x>
       <y>190</y>
-      <width>41</width>
+      <width>50</width>
       <height>51</height>
      </rect>
     </property>
@@ -149,7 +149,7 @@
      <rect>
       <x>80</x>
       <y>190</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -162,7 +162,7 @@
      <rect>
       <x>10</x>
       <y>190</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -175,7 +175,7 @@
      <rect>
       <x>150</x>
       <y>190</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -186,9 +186,9 @@
    <widget class="QPushButton" name="plus">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>230</x>
       <y>260</y>
-      <width>41</width>
+      <width>50</width>
       <height>51</height>
      </rect>
     </property>
@@ -201,7 +201,7 @@
      <rect>
       <x>80</x>
       <y>260</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -214,7 +214,7 @@
      <rect>
       <x>10</x>
       <y>260</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -227,7 +227,7 @@
      <rect>
       <x>150</x>
       <y>260</y>
-      <width>41</width>
+      <width>45</width>
       <height>51</height>
      </rect>
     </property>
@@ -241,7 +241,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>272</width>
+     <width>293</width>
      <height>22</height>
     </rect>
    </property>
