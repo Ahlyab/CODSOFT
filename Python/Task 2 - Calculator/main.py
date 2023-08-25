@@ -130,7 +130,7 @@ class MainApp(QMainWindow, ui):
         elif self._operation == "x":
             self._first = (self._first * self._second)
         elif self._operation == "/":
-            self._first = (self._first * self._second)
+            self._first = (self._first / self._second)
         self.disableOperations(False)
         self.output.display(self._first)
         self._eq = str(self._first)
