@@ -6,7 +6,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-
 public class Calculator {
     private JFrame frame;
     private JTextField subject1;
@@ -16,12 +15,8 @@ public class Calculator {
     private JLabel avg;
     private JLabel percent;
     private JLabel grade;
-
     private ArrayList<Component> components;
-
     private GradeCalculator gradeCalculator;
-
-
 
     public Calculator() {
         frame = new JFrame();
