@@ -19,6 +19,7 @@ public class Menu {
 
     public void setupUI(){
         frame.setTitle("Menu");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(400, 500);
         withdraw.setBounds(100, 100, 200, 50);
         deposit.setBounds(100, 200, 200, 50);
@@ -30,15 +31,15 @@ public class Menu {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        withdraw.addActionListener(new MenuActionListener(frame, new Withdraw()));
-        deposit.addActionListener(new MenuActionListener(frame, new Deposit()));
-        checkBalance.addActionListener(new MenuActionListener(frame, new CheckBalance()));
-        
-    }
+        withdraw.addActionListener(new MenuActionListener( new Withdraw()));
+        deposit.addActionListener(new MenuActionListener(new Deposit()));
+        checkBalance.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Your balance is " + ATM_GUI.account.getBalance());
+            }
+        });
 
-    public static void main(String[] args) {
-        new Menu().setupUI();
     }
-
 }
 

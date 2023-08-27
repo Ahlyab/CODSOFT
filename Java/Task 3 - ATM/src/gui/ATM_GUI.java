@@ -7,13 +7,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class ATM_GUI {
-    private static Account account = new Account();
+    protected static Account account = new Account();
     private JFrame frame;
     private JTextField name;
     private JTextField balance;
     private JButton login;
 
-    ATM_GUI() {
+    public ATM_GUI() {
         frame = new JFrame();
         name = new JTextField();
         balance = new JTextField();
@@ -21,7 +21,7 @@ public class ATM_GUI {
 
     }
 
-    private void setupUI(){
+    public void setupUI(){
         frame.setTitle("ATM login");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(400, 500);
@@ -69,10 +69,6 @@ public class ATM_GUI {
 
 
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new ATM_GUI().setupUI();
     }
 }
 
