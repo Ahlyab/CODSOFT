@@ -1,3 +1,5 @@
+package core;
+
 public class Account {
     private String name;
     private double balance;
@@ -5,7 +7,7 @@ public class Account {
     private String pin;
 
 
-    Account(){
+    public Account(){
         this("",0.00, "1234");
     }
 
