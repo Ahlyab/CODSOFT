@@ -43,13 +43,13 @@ public class Withdraw extends ATM_Operations {
                 try{
                     amount = Double.parseDouble(input.getText());
                     if(ATM_GUI.account.withdraw(amount)){
-                        JOptionPane.showMessageDialog(null, "Withdraw Successful. Remaining balance " + ATM_GUI.account.getBalance());
+                        JOptionPane.showMessageDialog(frame, "Withdraw Successful. Remaining balance " + ATM_GUI.account.getBalance());
                     }else {
-                        JOptionPane.showMessageDialog(null, "Insufficient Balance");
+                        JOptionPane.showMessageDialog(frame, "Insufficient Balance");
                     }
 
                 }catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Please enter numbers");
+                    JOptionPane.showMessageDialog(frame, "Please enter numbers");
                 }
                 frame.dispose();
             }

@@ -36,7 +36,7 @@ public class Menu {
         checkBalance.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Your balance is " + ATM_GUI.account.getBalance());
+                JOptionPane.showMessageDialog(frame, "Your balance is " + ATM_GUI.account.getBalance());
             }
         });
 

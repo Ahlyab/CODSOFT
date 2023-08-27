@@ -54,14 +54,15 @@ public class ATM_GUI {
                 try{
                     n = name.getText();
                     amount = Double.parseDouble(balance.getText());
+                    account.setName(n);
+                    account.setBalance(amount);
+
+                    frame.dispose();
+                    new Menu().setupUI();
                 } catch (Exception ex){
                     JOptionPane.showMessageDialog(null, "Please enter correct amount");
                 }
-                account.setName(n);
-                account.setBalance(amount);
 
-                frame.dispose();
-                new Menu().setupUI();
 
 
             }

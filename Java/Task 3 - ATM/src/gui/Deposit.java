@@ -43,13 +43,13 @@ public class Deposit extends ATM_Operations {
                 try{
                     double amount = Double.parseDouble(input.getText());
                     if(ATM_GUI.account.deposit(amount)){
-                        JOptionPane.showMessageDialog(null, "Deposit Successful. New balance " + ATM_GUI.account.getBalance());
+                        JOptionPane.showMessageDialog(frame, "Deposit Successful. New balance " + ATM_GUI.account.getBalance());
                     }else {
-                        JOptionPane.showMessageDialog(null, "Wrong amount entered. Please try again");
+                        JOptionPane.showMessageDialog(frame, "Wrong amount entered. Please try again");
                     }
 
                 }catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Please enter numbers");
+                    JOptionPane.showMessageDialog(frame, "Please enter numbers");
                 }
                 frame.dispose();
 
@@ -59,10 +59,6 @@ public class Deposit extends ATM_Operations {
 
         frame.setVisible(true);
 
-    }
-
-    public static void main(String[] args) {
-        new Withdraw().setupUI();
     }
 }
 
