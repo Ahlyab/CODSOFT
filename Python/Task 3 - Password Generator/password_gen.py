@@ -12,5 +12,5 @@ class Password_gen:
         self.size = size
         self.all_chars = self.lower + self.upper + self.numbers + self.symbols
     
-    def generate_password(self):
+    def generate_password(self) -> str:
         return "".join(random.sample(self.all_chars, self.size))
