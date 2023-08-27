@@ -2,14 +2,17 @@ public class Account {
     private String name;
     private double balance;
 
+    private String pin;
+
 
     Account(){
-        this("",0.00);
+        this("",0.00, "1234");
     }
 
-    Account(String name, double balance){
+    Account(String name, double balance, String pin){
         this.name = name;
         this.balance = balance;
+        this.pin = pin;
     }
 
     public String getName() {
