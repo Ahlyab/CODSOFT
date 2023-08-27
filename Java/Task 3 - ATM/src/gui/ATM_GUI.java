@@ -60,7 +60,7 @@ public class ATM_GUI {
                     frame.dispose();
                     new Menu().setupUI();
                 } catch (Exception ex){
-                    JOptionPane.showMessageDialog(null, "Please enter correct amount");
+                    JOptionPane.showMessageDialog(frame, "Please enter correct amount");
                 }
 
 
