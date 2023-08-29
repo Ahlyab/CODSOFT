@@ -20,7 +20,7 @@ public class Timer implements Runnable {
                 --duration;
             }
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println("Thread terminated!");
         }
     }
 
@@ -33,7 +33,9 @@ public class Timer implements Runnable {
 
     public void stopTimer() {
         try{
-            thread.interrupt();
+            if(!thread.isInterrupted()) {
+                thread.interrupt();
+            }
         } catch (Exception ex) {
             System.out.println("Thread stopped");
         }

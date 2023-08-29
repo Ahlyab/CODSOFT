@@ -21,12 +21,7 @@ public class Main {
 
         Timer timer = new Timer(20);
         timer.startTimer();
-//        timer.stopTimer();
-        for(int i=0; i<21; ++i) {
-            System.out.println(i);
-        }
-        TimeUnit.SECONDS.sleep(5);
-
+        TimeUnit.SECONDS.sleep(10);
         timer.stopTimer();
 
     }
