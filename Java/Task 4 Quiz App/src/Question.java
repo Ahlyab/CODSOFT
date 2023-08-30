@@ -9,7 +9,7 @@ public class Question {
         this.questionStatement = stmt;
         this.options = options;
         if(indexOfAnswer >= 0 && indexOfAnswer < options.length){
-            indexOfAnswer = indexOfAnswer;
+            this.indexOfAnswer = indexOfAnswer;
         }else{
             throw new IndexOutOfBoundsException(indexOfAnswer);
         }
@@ -20,7 +20,7 @@ public class Question {
     }
 
     public String getAnswer() {
-        return options[indexOfAnswer];
+        return (options != null ) ?options[indexOfAnswer] : null;
     }
 
     public String[] getOptions() {
