@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class Timer implements Runnable {
@@ -5,11 +6,13 @@ public class Timer implements Runnable {
     private int _duration;
     public Boolean timeout;
     private Thread thread;
+    private JLabel time;
 
-    public Timer(int durationInSec){
+    public Timer(int durationInSec, JLabel time){
         this.duration = durationInSec;
         this.timeout = false;
         this._duration = durationInSec;
+        this.time = time;
     }
 
     public void startTimer() throws InterruptedException {
@@ -19,7 +22,7 @@ public class Timer implements Runnable {
     public void run() {
         try {
             while(duration > 0) {
-                System.out.println(duration);
+                this.time.setText("left : " + duration);
                 TimeUnit.SECONDS.sleep(1);
                 --duration;
             }
@@ -34,21 +37,35 @@ public class Timer implements Runnable {
         if(thread == null) {
             thread = new Thread(this, "testing");
         }
-        thread.start();
+        if(thread.getState() == Thread.State.WAITING){
+            thread.notify();
+            return;
+        }
+        if(thread.getState() != Thread.State.RUNNABLE) {
+            thread.start();
+
+        }
     }
 
     public void stopTimer() {
-        try{
-            if(!thread.isInterrupted()) {
-                thread.interrupt();
-            }
-        } catch (Exception ex) {
-            System.out.println("Thread stopped");
+//        try{
+//            if(!thread.isInterrupted()) {
+////                thread.interrupt();
+//                thread.wait();
+//
+//            }
+//        } catch (Exception ex) {
+//            System.out.println("Thread stopped");
+//        }
+        try {
+            thread.wait();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     public void reset() {
-        this.stopTimer();
+//        this.stopTimer();
         this.duration = this._duration;
     }
 
