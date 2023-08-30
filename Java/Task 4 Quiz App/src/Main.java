@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -19,10 +20,23 @@ public class Main {
 //            System.out.println("Wrong");
 //        }
 
-        Timer timer = new Timer(20);
-        timer.startTimer();
-        TimeUnit.SECONDS.sleep(10);
-        timer.stopTimer();
+//        Timer timer = new Timer(20);
+//        timer.startTimer();
+//        TimeUnit.SECONDS.sleep(10);
+//        timer.stopTimer();
+
+        ArrayList<Question> questions = new ArrayList<Question>();
+        questions.add(new Question("testing", new String[]{"1","2","3"}, 2));
+        questions.add(new Question("testing", new String[]{"1","2","3"}, 2));
+        questions.add(new Question("testing", new String[]{"1","2","3"}, 2));
+        questions.add(new Question("testing", new String[]{"1","2","3"}, 2));
+        questions.add(new Question("testing", new String[]{"1","2","3"}, 2));
+        questions.add(new Question("testing", new String[]{"1","2","3"}, 2));
+        questions.add(new Question("testing", new String[]{"1","2","3"}, 2));
+
+        Quiz quiz = new Quiz(questions);
+
+
 
     }
 }
