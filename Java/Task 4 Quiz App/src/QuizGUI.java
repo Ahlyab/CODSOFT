@@ -2,9 +2,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class QuizGUI {
     private JFrame frame;
+    private Boolean firstTime = true;
     private int marks = 0;
     private JLabel question;
     private ArrayList<JRadioButton> options;
@@ -28,7 +30,7 @@ public class QuizGUI {
         quiz = new Quiz();
         quiz.addDummyQuestions();
         result = new JLabel();
-        timer = new Timer(60);
+        timer = new Timer(60, time);
     }
 
     public void setupUI() {
@@ -77,6 +79,12 @@ public class QuizGUI {
                         }
                     }
                 }
+                try {
+                    TimeUnit.MILLISECONDS.sleep(10);
+                    timer.reset();
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
                 addQuestion();
             }
         });
@@ -88,6 +96,7 @@ public class QuizGUI {
 
     public void  addQuestion(){
         Question question = quiz.getQuestion();
+
         currentAnswer = (question != null) ? question.getAnswer() : null;
         System.out.println(currentAnswer);
         bg.clearSelection();
@@ -103,6 +112,10 @@ public class QuizGUI {
                 options.get(i).setText("");
             }
             submit.setEnabled(false);
+        }
+        if(firstTime) {
+            timer.start();
+            firstTime = false;
         }
     }
 
