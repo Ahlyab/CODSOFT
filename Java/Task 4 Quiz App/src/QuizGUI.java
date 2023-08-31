@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class QuizGUI {
         quiz = new Quiz();
         quiz.addDummyQuestions();
         result = new JLabel();
-        timer = new Timer(60, time);
+        timer = new Timer(60, time, submit);
     }
 
     public void setupUI() {
@@ -79,18 +80,10 @@ public class QuizGUI {
                         }
                     }
                 }
-//                try {
-//                    TimeUnit.MILLISECONDS.sleep(10);
-//                    timer.reset();
-//                } catch (InterruptedException ex) {
-//                    throw new RuntimeException(ex);
-//                }
                 timer.reset();
                 addQuestion();
             }
         });
-
-
         frame.setVisible(true);
 
     }
@@ -99,7 +92,6 @@ public class QuizGUI {
         Question question = quiz.getQuestion();
 
         currentAnswer = (question != null) ? question.getAnswer() : null;
-        System.out.println(currentAnswer);
         bg.clearSelection();
         if(question != null) {
             this.question.setText(question.getQuestionStatement());
@@ -107,17 +99,11 @@ public class QuizGUI {
                 options.get(i).setText(question.getOptions()[i]);
             }
         }else{
-            this.question.setText("Quiz Ended");
-            result.setText("Score : " + marks);
-            for(int i=0; i<options.size(); ++i) {
-                options.get(i).setText("");
-            }
-            submit.setEnabled(false);
+            timer.stopTimer();
+            JOptionPane.showMessageDialog(frame, "Quiz ended, your score is " + marks + "/10");
+            frame.dispose();
+            return;
         }
-//        if(firstTime) {
-//            timer.start();
-//            firstTime = false;
-//        }
         timer.start();
     }
 
