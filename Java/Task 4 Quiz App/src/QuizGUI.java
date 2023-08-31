@@ -79,12 +79,13 @@ public class QuizGUI {
                         }
                     }
                 }
-                try {
-                    TimeUnit.MILLISECONDS.sleep(10);
-                    timer.reset();
-                } catch (InterruptedException ex) {
-                    throw new RuntimeException(ex);
-                }
+//                try {
+//                    TimeUnit.MILLISECONDS.sleep(10);
+//                    timer.reset();
+//                } catch (InterruptedException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+                timer.reset();
                 addQuestion();
             }
         });
@@ -113,10 +114,11 @@ public class QuizGUI {
             }
             submit.setEnabled(false);
         }
-        if(firstTime) {
-            timer.start();
-            firstTime = false;
-        }
+//        if(firstTime) {
+//            timer.start();
+//            firstTime = false;
+//        }
+        timer.start();
     }
 
     public static void main(String[] args) {
