@@ -106,8 +106,4 @@ public class QuizGUI {
         }
         timer.start();
     }
-
-    public static void main(String[] args) {
-        new QuizGUI().setupUI();
-    }
 }

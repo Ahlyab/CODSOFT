@@ -33,7 +33,7 @@ public class Timer implements Runnable {
                 submit.doClick();
             }
         } catch (InterruptedException e) {
-            System.out.println("Thread terminated!");
+            // do nothing
         }
 
     }
