@@ -13,6 +13,8 @@ public class QuizGUI {
     private JLabel time;
     private ButtonGroup bg;
     private JLabel result;
+    private ArrayList<String> answers;
+
 
     private Quiz quiz;
     private String currentAnswer;
@@ -30,6 +32,7 @@ public class QuizGUI {
         quiz.addDummyQuestions();
         result = new JLabel();
         timer = new Timer(60, time, submit);
+        answers = new ArrayList<String>();
     }
 
     public void setupUI() {
@@ -93,12 +96,17 @@ public class QuizGUI {
         bg.clearSelection();
         if(question != null) {
             this.question.setText(question.getQuestionStatement());
+            this.answers.add(currentAnswer);
             for(int i=0; i<options.size(); ++i) {
                 options.get(i).setText(question.getOptions()[i]);
             }
         }else{
             timer.stopTimer();
-            JOptionPane.showMessageDialog(frame, "Quiz ended, your score is " + marks + "/10");
+            String text = "Quiz ended, your score is " + marks + "/10\nAnswers\n";
+            for(int i=0; i<answers.size(); ++i) {
+                text += (i+1) + ". " + answers.get(i) + "\n";
+            }
+            JOptionPane.showMessageDialog(frame, text);
             frame.dispose();
             return;
         }
