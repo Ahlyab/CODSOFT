@@ -49,17 +49,10 @@ public class Timer implements Runnable {
         try{
             if(!thread.isInterrupted()) {
                 thread.interrupt();
-//                thread.wait();
-
             }
         } catch (Exception ex) {
             System.out.println("Thread stopped");
         }
-//        try {
-//            thread.wait();
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     public void reset() {
