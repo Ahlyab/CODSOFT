@@ -37,36 +37,38 @@ public class Timer implements Runnable {
         if(thread == null) {
             thread = new Thread(this, "testing");
         }
-        if(thread.getState() == Thread.State.WAITING){
-            thread.notify();
-            return;
-        }
-        if(thread.getState() != Thread.State.RUNNABLE) {
-            thread.start();
-
-        }
+//        if(thread.getState() == Thread.State.WAITING){
+//            thread.notify();
+//            return;
+//        }
+//        if(thread.getState() != Thread.State.RUNNABLE) {
+//            thread.start();
+//
+//        }
+        thread.start();
     }
 
     public void stopTimer() {
-//        try{
-//            if(!thread.isInterrupted()) {
-////                thread.interrupt();
+        try{
+            if(!thread.isInterrupted()) {
+                thread.interrupt();
 //                thread.wait();
-//
-//            }
-//        } catch (Exception ex) {
-//            System.out.println("Thread stopped");
-//        }
-        try {
-            thread.wait();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+
+            }
+        } catch (Exception ex) {
+            System.out.println("Thread stopped");
         }
+//        try {
+//            thread.wait();
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public void reset() {
-//        this.stopTimer();
+        this.stopTimer();
         this.duration = this._duration;
+        this.thread = new Thread(this, "Testing");
     }
 
 }
