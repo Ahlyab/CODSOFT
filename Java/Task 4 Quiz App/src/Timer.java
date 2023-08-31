@@ -7,12 +7,14 @@ public class Timer implements Runnable {
     public Boolean timeout;
     private Thread thread;
     private JLabel time;
+    private JButton submit;
 
-    public Timer(int durationInSec, JLabel time){
+    public Timer(int durationInSec, JLabel time, JButton submit){
         this.duration = durationInSec;
         this.timeout = false;
         this._duration = durationInSec;
         this.time = time;
+        this.submit = submit;
     }
 
     public void startTimer() throws InterruptedException {
@@ -27,6 +29,9 @@ public class Timer implements Runnable {
                 --duration;
             }
             timeout = true;
+            if(timeout) {
+                submit.doClick();
+            }
         } catch (InterruptedException e) {
             System.out.println("Thread terminated!");
         }
@@ -37,14 +42,6 @@ public class Timer implements Runnable {
         if(thread == null) {
             thread = new Thread(this, "testing");
         }
-//        if(thread.getState() == Thread.State.WAITING){
-//            thread.notify();
-//            return;
-//        }
-//        if(thread.getState() != Thread.State.RUNNABLE) {
-//            thread.start();
-//
-//        }
         thread.start();
     }
 
@@ -69,6 +66,7 @@ public class Timer implements Runnable {
         this.stopTimer();
         this.duration = this._duration;
         this.thread = new Thread(this, "Testing");
+        this.timeout = false;
     }
 
 }
