@@ -1,3 +1,5 @@
+package CustomGUIComponents;
+
 import javax.swing.*;
 import java.awt.*;
 

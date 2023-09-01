@@ -1,7 +1,9 @@
+import CustomGUIComponents.CustomButtons;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Menu {
+public class Menu extends Window {
     private JFrame frame;
     private CustomButtons addStudent;
     private CustomButtons addCourse;
@@ -52,7 +54,6 @@ public class Menu {
         frame.add(registerForCourse);
         frame.add(this.unEnrollCourse);
         frame.add(heading);
-
 
         frame.setLayout(null);
         frame.setVisible(true);
