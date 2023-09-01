@@ -1,11 +1,10 @@
 package GUI_Windows;
 
 import CustomGUIComponents.CustomButtons;
+import ExceptionsAndActions.MenuActionListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Menu extends Window {
     private JFrame frame;
@@ -60,12 +59,12 @@ public class Menu extends Window {
         frame.add(heading);
 
         // adding actionListeners
-        addStudent.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+        addStudent.addActionListener(new MenuActionListener(new AddStudent()));
+        addCourse.addActionListener(new MenuActionListener(new AddCourse()));
+        checkStudentsInCourse.addActionListener(new MenuActionListener(new CheckStudentsEnrolled()));
+        checkCourseEnrolledByStudent.addActionListener(new MenuActionListener(new CourseTaken()));
+        registerForCourse.addActionListener(new MenuActionListener(new RegisterCourse()));
+        unEnrollCourse.addActionListener(new MenuActionListener(new UnEnrollCourse()));
 
         frame.setLayout(null);
         frame.setVisible(true);
