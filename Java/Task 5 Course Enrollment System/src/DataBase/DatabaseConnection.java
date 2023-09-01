@@ -1,3 +1,5 @@
+package DataBase;
+
 import java.sql.*;
 public class DatabaseConnection {
     public static Connection connection;
@@ -17,10 +19,7 @@ public class DatabaseConnection {
         }
     }
 
-    public static  void closeConnection() {
+    public static  void closeConnection() throws SQLException {
         connection.close();
-    }
-    public static void main(String args[]){
-
     }
 }
