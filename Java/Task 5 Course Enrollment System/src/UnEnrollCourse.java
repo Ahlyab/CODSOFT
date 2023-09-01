@@ -1,8 +1,7 @@
-public class RegisterCourse extends Window {
+public class UnEnrollCourse extends Window {
 
     @Override
     public void setupUI() {
 
     }
 }
-
