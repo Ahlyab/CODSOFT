@@ -1,11 +1,14 @@
 package GUI_Windows;
 
-import DataBase.*;
+import DataBase.DatabaseConnection;
+import ExceptionsAndActions.InputFocusListener;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 
@@ -45,19 +48,7 @@ public class AddStudent extends Window {
 
         // configs
 
-        studentName.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                studentName.setText("");
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if(studentName.getText().isEmpty()) {
-                    studentName.setText("Enter student name");
-                }
-            }
-        });
+        studentName.addFocusListener(new InputFocusListener(studentName, "Enter student name"));
 
         submit.addActionListener(new ActionListener() {
             @Override

@@ -4,12 +4,12 @@ import javax.swing.text.JTextComponent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class inputFocusListener extends FocusAdapter {
+public class InputFocusListener extends FocusAdapter {
 
     private String placeholder;
     private JTextComponent inputField;
 
-    public inputFocusListener(JTextComponent inputField, String placeholder) {
+    public InputFocusListener(JTextComponent inputField, String placeholder) {
         this.placeholder = placeholder;
         this.inputField = inputField;
     }
