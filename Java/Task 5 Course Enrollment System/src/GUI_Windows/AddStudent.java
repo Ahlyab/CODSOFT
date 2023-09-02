@@ -33,7 +33,7 @@ public class AddStudent extends Window {
     public void setupUI() {
         frame.setLayout(null);
         frame.setSize(500,400);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         // set bounds
         heading.setBounds(150, 50, 200, 50);
         heading.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 24));
