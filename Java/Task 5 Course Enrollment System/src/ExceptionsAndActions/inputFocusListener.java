@@ -1,0 +1,28 @@
+package ExceptionsAndActions;
+
+import javax.swing.text.JTextComponent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+
+public class inputFocusListener extends FocusAdapter {
+
+    private String placeholder;
+    private JTextComponent inputField;
+
+    public inputFocusListener(JTextComponent inputField, String placeholder) {
+        this.placeholder = placeholder;
+        this.inputField = inputField;
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {
+        inputField.setText("");
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        if(inputField.getText().isEmpty()) {
+            inputField.setText(placeholder);
+        }
+    }
+}

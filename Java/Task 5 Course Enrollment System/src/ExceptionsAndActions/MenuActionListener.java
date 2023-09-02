@@ -4,6 +4,7 @@ import GUI_Windows.Window;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
 
 public class MenuActionListener implements ActionListener {
     private Window window;
@@ -15,3 +16,4 @@ public class MenuActionListener implements ActionListener {
         window.setupUI();
     }
 }
+

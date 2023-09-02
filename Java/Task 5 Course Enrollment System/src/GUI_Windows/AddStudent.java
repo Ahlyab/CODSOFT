@@ -66,14 +66,11 @@ public class AddStudent extends Window {
                 try {
                     CallableStatement cs =  db.connection.prepareCall("{CALL addStudent(?)}");
                     cs.setString(1, name);
-                    if(cs.execute()) {
-                        JOptionPane.showMessageDialog(frame, "Successfully added");
-                    }else{
-                        JOptionPane.showMessageDialog(frame, "Failed to add, Please try again");
-                    }
+                    cs.execute();
+                    JOptionPane.showMessageDialog(frame, "Successfully added");
+                    frame.dispose();
                 } catch (SQLException ex) {
-//                    throw new RuntimeException(ex);
-                    JOptionPane.showMessageDialog(frame, "MySQL error");
+                    JOptionPane.showMessageDialog(frame, "MySQL error : " + ex.getMessage());
                 }
             }
         });
@@ -85,7 +82,6 @@ public class AddStudent extends Window {
                 db.connectDatabase();
             }
         });
-
         frame.setVisible(true);
     }
 }
