@@ -114,6 +114,33 @@ END;
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE PROCEDURE AddStudent(IN studentName VARCHAR(255))
+BEGIN
+    INSERT INTO students (name)
+    VALUES (studentName);
+END;
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE AddCourse(
+    IN courseCode VARCHAR(10),
+    IN courseTitle VARCHAR(255),
+    IN courseDescription TEXT,
+    IN courseCapacity INT,
+    IN courseSchedule VARCHAR(255)
+)
+BEGIN
+    INSERT INTO courses (course_code, title, description, capacity, schedule)
+    VALUES (courseCode, courseTitle, courseDescription, courseCapacity, courseSchedule);
+END;
+//
+
+DELIMITER ;
 
 
 
