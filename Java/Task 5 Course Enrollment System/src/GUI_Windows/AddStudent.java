@@ -1,15 +1,19 @@
 package GUI_Windows;
 
+import DataBase.*;
+
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
+import java.sql.CallableStatement;
+import java.sql.SQLException;
 
 public class AddStudent extends Window {
 
-    private JFrame frame = new JFrame();
+    private JFrame frame;
+
+    private DatabaseConnection db;
     private JLabel heading;
     private JTextField studentName;
     private JButton submit;
@@ -19,6 +23,7 @@ public class AddStudent extends Window {
         heading = new JLabel("Add Student");
         studentName = new JTextField();
         submit = new JButton("Add");
+        db = new DatabaseConnection();
     }
 
     @Override
@@ -54,13 +59,33 @@ public class AddStudent extends Window {
             }
         });
 
+        submit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = studentName.getText();
+                try {
+                    CallableStatement cs =  db.connection.prepareCall("{CALL addStudent(?)}");
+                    cs.setString(1, name);
+                    if(cs.execute()) {
+                        JOptionPane.showMessageDialog(frame, "Successfully added");
+                    }else{
+                        JOptionPane.showMessageDialog(frame, "Failed to add, Please try again");
+                    }
+                } catch (SQLException ex) {
+//                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(frame, "MySQL error");
+                }
+            }
+        });
+
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowOpened(WindowEvent e) {
                 submit.requestFocus();
+                db.connectDatabase();
             }
         });
-        
+
         frame.setVisible(true);
     }
 }

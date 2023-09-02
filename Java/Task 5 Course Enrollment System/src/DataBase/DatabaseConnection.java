@@ -2,9 +2,9 @@ package DataBase;
 
 import java.sql.*;
 public class DatabaseConnection {
-    public static Connection connection;
+    public  Connection connection;
 
-    public static void connectDatabase() {
+    public  void connectDatabase() {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql:// localhost:3306/course_management","root","admin");
@@ -19,7 +19,7 @@ public class DatabaseConnection {
         }
     }
 
-    public static  void closeConnection() throws SQLException {
+    public void closeConnection() throws SQLException {
         connection.close();
     }
 }
