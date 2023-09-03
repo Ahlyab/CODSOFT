@@ -142,6 +142,53 @@ END;
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE PROCEDURE GetStudentIDByName(IN studentName VARCHAR(255), OUT studentID INT)
+BEGIN
+    SELECT student_id INTO studentID
+    FROM students
+    WHERE name = studentName;
+END;
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE GetCourseIDByCode(IN courseCode VARCHAR(10), OUT courseID INT)
+BEGIN
+    SELECT course_id INTO courseID
+    FROM courses
+    WHERE course_code = courseCode;
+END;
+//
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE GetCourseNames()
+BEGIN
+    SELECT course_code 
+    FROM courses;
+END;
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE GetStudentNames()
+BEGIN
+    SELECT * 
+    FROM students;
+END;
+//
+
+DELIMITER ;
+
 
 
 -- Insert 10 entries into the courses table
