@@ -27,43 +27,6 @@ CREATE TABLE IF NOT EXISTS student_course (
     FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
 
--- Course Listing: Display available courses with details and available slots
--- SELECT c.course_code, c.title, c.description, c.capacity, c.schedule, 
---        c.capacity - IFNULL(SUM(s.course_id = c.course_id), 0) AS available_slots
--- FROM courses c
--- LEFT JOIN student_course s ON c.course_id = s.course_id
--- GROUP BY c.course_id;
-
--- Student Registration: Allow students to register for courses from the available options
--- INSERT INTO student_course (student_id, course_id)
--- VALUES (/* student_id */, /* course_id */);
-
--- Course Removal: Enable students to drop courses they have registered for
--- DELETE FROM student_course
--- WHERE student_id = /* student_id */ AND course_id = /* course_id */;
-
-DELIMITER //
-CREATE PROCEDURE RegisterStudentForCourse(IN studentID INT, IN courseID INT)
-BEGIN
-    DECLARE current_capacity INT;
-    
-    -- Get the current capacity of the course
-    SELECT COUNT(*) INTO current_capacity
-    FROM student_course
-    WHERE course_id = courseID;
-
-    -- Check if the course is already full
-    IF current_capacity >= 100 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Course is already full. Cannot register.';
-    ELSE
-        INSERT INTO student_course (student_id, course_id)
-        VALUES (studentID, courseID);
-    END IF;
-END;
-//
-DELIMITER ;
-
 DELIMITER //
 
 CREATE PROCEDURE RegisterStudentForCourse(
@@ -104,17 +67,6 @@ END;
 //
 
 DELIMITER ;
-
-
-DELIMITER //
-CREATE PROCEDURE RemoveCourseRegistration(IN studentID INT, IN courseID INT)
-BEGIN
-    DELETE FROM student_course
-    WHERE student_id = studentID AND course_id = courseID;
-END;
-//
-DELIMITER ;
-
 
 DELIMITER //
 
