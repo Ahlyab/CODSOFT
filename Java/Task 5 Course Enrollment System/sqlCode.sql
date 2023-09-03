@@ -65,6 +65,48 @@ END;
 DELIMITER ;
 
 DELIMITER //
+
+CREATE PROCEDURE RegisterStudentForCourse(
+    IN studentID INT,
+    IN courseID INT,
+    OUT registrationStatus VARCHAR(255)
+)
+BEGIN
+    DECLARE current_capacity INT;
+    DECLARE max_capacity INT;
+    
+    -- Get the current capacity and maximum capacity of the course
+    SELECT COUNT(*) INTO current_capacity
+    FROM student_course
+    WHERE course_id = courseID;
+    
+    SELECT capacity INTO max_capacity
+    FROM courses
+    WHERE course_id = courseID;
+
+    -- Check if the course is already full
+    IF current_capacity >= max_capacity THEN
+        SET registrationStatus = 'Course is already full. Registration failed.';
+    ELSE
+        -- Check if the student is already registered for the course
+        IF EXISTS (
+            SELECT * FROM student_course
+            WHERE student_id = studentID AND course_id = courseID
+        ) THEN
+            SET registrationStatus = 'Student is already registered for this course.';
+        ELSE
+            INSERT INTO student_course (student_id, course_id)
+            VALUES (studentID, courseID);
+            SET registrationStatus = 'Registration successful.';
+        END IF;
+    END IF;
+END;
+//
+
+DELIMITER ;
+
+
+DELIMITER //
 CREATE PROCEDURE RemoveCourseRegistration(IN studentID INT, IN courseID INT)
 BEGIN
     DELETE FROM student_course
