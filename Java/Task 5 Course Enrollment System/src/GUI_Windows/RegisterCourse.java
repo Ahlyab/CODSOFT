@@ -7,9 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.CallableStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class RegisterCourse extends Window {
 
@@ -33,7 +31,7 @@ public class RegisterCourse extends Window {
     public void setupUI() {
         frame.setLayout(null);
         frame.setSize(400,500);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         // set bounds
         name.setBounds(100, 50, 200, 40);
@@ -51,6 +49,16 @@ public class RegisterCourse extends Window {
             public void windowOpened(WindowEvent e) {
                 register.requestFocus();
             }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                try {
+                    db.closeConnection();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                super.windowClosed(e);
+            }
         });
 
         name.addItem("Select name");
@@ -66,7 +74,31 @@ public class RegisterCourse extends Window {
         register.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                String courseCode = (String) course.getSelectedItem();
+                String studentName = (String) name.getSelectedItem();
+                if(courseCode.equals("Select course") || studentName.equals("Select name")){
+                    JOptionPane.showMessageDialog(frame,"Make sure you have selected student and course name");
+                    return;
+                }
+
+
+                String id = studentName.split("\\.")[0];
+
+                try {
+                    CallableStatement cs = db.connection.prepareCall("{CALL GetCourseIDByCode(?, ?)}");
+                    cs.setString(1, courseCode);
+                    cs.registerOutParameter(2, Types.INTEGER);
+                    cs.execute();
+                    int courseId = cs.getInt(2);
+                    cs = db.connection.prepareCall("{CALL RegisterStudentForCourse(?, ?, ?)}");
+                    cs.setInt(1, Integer.parseInt(id));
+                    cs.setInt(2, courseId);
+                    cs.registerOutParameter("registrationStatus", Types.VARCHAR);
+                    cs.execute();
+                    JOptionPane.showMessageDialog(frame, cs.getString("registrationStatus"));
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
