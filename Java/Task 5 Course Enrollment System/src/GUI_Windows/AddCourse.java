@@ -24,7 +24,7 @@ public class AddCourse extends Window {
     private JTextField description;
     private JComboBox<Integer> capcity;
     private JTextField schedule;
-    private JButton submit;
+    private JButton add;
 
     public AddCourse() {
         frame = new JFrame("Add Course");
@@ -34,7 +34,7 @@ public class AddCourse extends Window {
         description = new JTextField();
         capcity = new JComboBox<Integer>();
         schedule = new JTextField();
-        submit = new JButton("Add");
+        add = new JButton("Add");
         db = new DatabaseConnection();
         db.connectDatabase();
     }
@@ -54,7 +54,7 @@ public class AddCourse extends Window {
         capcity.setBounds(250, 200, 100, 30);
         description.setBounds(100, 250, 250,30);
         schedule.setBounds(100, 300, 250, 30);
-        submit.setBounds(200, 350, 100, 40);
+        add.setBounds(200, 350, 100, 40);
 
         // adding components
         frame.add(heading);
@@ -63,7 +63,7 @@ public class AddCourse extends Window {
         frame.add(description);
         frame.add(capcity);
         frame.add(schedule);
-        frame.add(submit);
+        frame.add(add);
 
         // configs
         capcity.addItem(50);
@@ -74,7 +74,39 @@ public class AddCourse extends Window {
         description.addFocusListener(new InputFocusListener(description, "Course Description"));
         schedule.addFocusListener(new InputFocusListener(schedule, "schedule e-g : Mon/Wed 9:00 AM - 10:30 AM"));
 
-//        courseCode.getDocument().addDocumentListener(new CourseCodeValidator(courseCode));
+
+        add.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String _title = title.getText();
+                String _cc = courseCode.getText();
+                int _capacity = capcity.getItemAt(capcity.getSelectedIndex());
+                String _description = description.getText();
+                String _schedule = schedule.getText();
+
+                if(_title.isEmpty() || _cc.isEmpty() || _description.isEmpty() || _schedule.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Make sure all fields are filled!");
+                    return;
+                }
+
+                try {
+                    CallableStatement cs = db.connection.prepareCall("{CALL AddCourse(?,?,?,?,?)}");
+                    cs.setString(1, _cc);
+                    cs.setString(2, _title);
+                    cs.setString(3, _description);
+                    cs.setInt(4, _capacity);
+                    cs.setString(5, _schedule);
+                    cs.execute();
+                    JOptionPane.showMessageDialog(frame, "Successfully added");
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(frame, "Failed to add");
+
+                }
+            }
+        });
+
+
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -82,7 +114,7 @@ public class AddCourse extends Window {
                 description.requestFocus();
                 courseCode.requestFocus();
                 schedule.requestFocus();
-                submit.requestFocus();
+                add.requestFocus();
             }
 
             @Override
