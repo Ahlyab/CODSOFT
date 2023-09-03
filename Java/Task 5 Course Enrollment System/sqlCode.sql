@@ -117,6 +117,36 @@ DELIMITER ;
 
 
 DELIMITER //
+
+CREATE PROCEDURE RemoveCourseRegistration(
+    IN studentID INT,
+    IN courseID INT,
+    OUT removalStatus VARCHAR(255)
+)
+BEGIN
+    DECLARE registrationExists INT;
+    
+    -- Check if the student is registered for the course
+    SELECT COUNT(*) INTO registrationExists
+    FROM student_course
+    WHERE student_id = studentID AND course_id = courseID;
+
+    IF registrationExists > 0 THEN
+        -- Student is registered; remove the registration
+        DELETE FROM student_course
+        WHERE student_id = studentID AND course_id = courseID;
+        SET removalStatus = 'Course registration removed successfully.';
+    ELSE
+        -- Student is not registered for the course
+        SET removalStatus = 'Student is not registered for this course.';
+    END IF;
+END;
+//
+
+DELIMITER ;
+
+
+DELIMITER //
 CREATE PROCEDURE ListAvailableCourses()
 BEGIN
     SELECT c.course_code, c.title, c.description, c.capacity, c.schedule, 
