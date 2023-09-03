@@ -14,7 +14,6 @@ import java.awt.event.WindowEvent;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 
 public class CourseTaken extends Window {
 
