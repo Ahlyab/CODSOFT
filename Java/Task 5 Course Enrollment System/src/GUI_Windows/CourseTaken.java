@@ -35,12 +35,7 @@ public class CourseTaken extends Window {
         tableModel.addColumn("Schedule");
         tableModel.addRow(new Object[]{"Course ID", "Course Code", "Title", "Description", "Schedule"});
         scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-//        scrollPane.createHorizontalScrollBar();
         this.table = new JTable(tableModel);
-//        table.setAutoscrolls(true);
-//        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // copied and not working
-        // Add the JScrollPane (containing the JTable) to the JFrame
-//        frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
         this.input = new JComboBox<String>();
         this.search = new JButton("Search");
         this.db = new DatabaseConnection();
