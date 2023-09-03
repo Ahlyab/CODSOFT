@@ -1,9 +1,8 @@
 package ExceptionsAndActions;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.event.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public class CourseCodeValidator implements FocusListener {
 
@@ -18,7 +17,7 @@ public class CourseCodeValidator implements FocusListener {
 
 
     public void warn() {
-        if (textField.getText().length() > 8){
+        if (textField.getText().length() > 9){
             JOptionPane.showMessageDialog(null,
                     "Error: course code can't be greater than 8 characters", "Error Message",
                     JOptionPane.ERROR_MESSAGE);

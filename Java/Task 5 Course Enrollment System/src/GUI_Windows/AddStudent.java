@@ -27,6 +27,8 @@ public class AddStudent extends Window {
         studentName = new JTextField();
         submit = new JButton("Add");
         db = new DatabaseConnection();
+        db.connectDatabase();
+
     }
 
     @Override
@@ -70,7 +72,16 @@ public class AddStudent extends Window {
             @Override
             public void windowOpened(WindowEvent e) {
                 submit.requestFocus();
-                db.connectDatabase();
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                try {
+                    db.closeConnection();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                super.windowClosed(e);
             }
         });
         frame.setVisible(true);
