@@ -22,6 +22,15 @@ class MainApp(QMainWindow, ui):
 
             self.setupUi(self)
 
+        def buttonclicked(self):
+            input = self.input.text()
+            data = get_weather_data(self._api, input)
+            report = get_weather_report(data)
+
+        def updateFields(self, report):
+            # update fields according to report data
+            pass
+
 def main():
     app = QApplication(sys.argv)
     windows = MainApp()

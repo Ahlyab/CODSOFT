@@ -14,7 +14,7 @@
    <string>Weather App</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="input">
     <property name="geometry">
      <rect>
       <x>40</x>
