@@ -10,7 +10,7 @@ class Quiz:
     def addQuestion(self, question : Question) -> None:
         self.questions.append(question)
 
-    def getQuestion(self):
+    def getQuestion(self) -> Question:
         q = self.questions.pop(0)
         return q
     def addDummyQuestions(self):
@@ -51,3 +51,5 @@ class FeedBack:
         for question, answer in self.QA.items:
             report = report + f"Q: {question} \n A: {answer} \n"
         return report
+
+
