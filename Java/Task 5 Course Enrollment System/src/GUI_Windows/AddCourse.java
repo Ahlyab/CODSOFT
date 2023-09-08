@@ -35,8 +35,8 @@ public class AddCourse extends Window {
         capcity = new JComboBox<Integer>();
         schedule = new JTextField();
         add = new JButton("Add");
-        db = new DatabaseConnection();
-        db.connectDatabase();
+        db = DatabaseConnection.getInstance();
+
     }
 
     @Override
@@ -119,11 +119,6 @@ public class AddCourse extends Window {
 
             @Override
             public void windowClosed(WindowEvent e) {
-                try {
-                    db.closeConnection();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
                 super.windowClosed(e);
             }
         });

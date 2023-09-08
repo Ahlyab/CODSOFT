@@ -38,8 +38,7 @@ public class CourseTaken extends Window {
         this.table = new JTable(tableModel);
         this.input = new JComboBox<String>();
         this.search = new JButton("Search");
-        this.db = new DatabaseConnection();
-        db.connectDatabase();
+        this.db =  DatabaseConnection.getInstance();
     }
 
     @Override
@@ -75,11 +74,6 @@ public class CourseTaken extends Window {
 
             @Override
             public void windowClosed(WindowEvent e) {
-                try {
-                    db.closeConnection();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
                 super.windowClosed(e);
             }
         });

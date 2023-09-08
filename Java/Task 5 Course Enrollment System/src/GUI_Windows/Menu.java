@@ -1,10 +1,14 @@
 package GUI_Windows;
 
 import CustomGUIComponents.CustomButtons;
+import DataBase.DatabaseConnection;
 import ExceptionsAndActions.MenuActionListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 public class Menu extends Window {
     private JFrame frame;
@@ -65,6 +69,18 @@ public class Menu extends Window {
         checkCourseEnrolledByStudent.addActionListener(new MenuActionListener(new CourseTaken()));
         registerForCourse.addActionListener(new MenuActionListener(new RegisterCourse()));
         unEnrollCourse.addActionListener(new MenuActionListener(new UnEnrollCourse()));
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                try {
+                    DatabaseConnection.getInstance().closeConnection();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                super.windowClosed(e);
+            }
+        });
 
         frame.setLayout(null);
         frame.setVisible(true);

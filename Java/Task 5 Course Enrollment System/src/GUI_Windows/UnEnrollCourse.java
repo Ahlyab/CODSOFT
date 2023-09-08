@@ -24,8 +24,7 @@ public class UnEnrollCourse extends Window {
         this.name = new JComboBox<String>();
         this.course = new JComboBox<String>();
         this.unEnroll = new JButton("UnEnroll");
-        this.db = new DatabaseConnection();
-        db.connectDatabase();
+        this.db =  DatabaseConnection.getInstance();
 
     }
 
@@ -54,11 +53,6 @@ public class UnEnrollCourse extends Window {
 
             @Override
             public void windowClosed(WindowEvent e) {
-                try {
-                    db.closeConnection();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
                 super.windowClosed(e);
             }
         });

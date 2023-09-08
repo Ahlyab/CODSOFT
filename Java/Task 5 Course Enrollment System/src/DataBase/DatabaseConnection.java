@@ -2,7 +2,18 @@ package DataBase;
 
 import java.sql.*;
 public class DatabaseConnection {
-    public  Connection connection;
+    public Connection connection;
+    private static DatabaseConnection dbc;
+    private DatabaseConnection() {
+        connectDatabase();
+    }
+
+    public static DatabaseConnection getInstance() {
+        if(dbc == null) {
+            dbc = new DatabaseConnection();
+        }
+        return dbc;
+    }
 
     public  void connectDatabase() {
         try{

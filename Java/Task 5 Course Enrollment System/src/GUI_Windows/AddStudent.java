@@ -26,8 +26,8 @@ public class AddStudent extends Window {
         heading = new JLabel("Add Student");
         studentName = new JTextField();
         submit = new JButton("Add");
-        db = new DatabaseConnection();
-        db.connectDatabase();
+        db = DatabaseConnection.getInstance();
+
 
     }
 
@@ -76,11 +76,6 @@ public class AddStudent extends Window {
 
             @Override
             public void windowClosed(WindowEvent e) {
-                try {
-                    db.closeConnection();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
                 super.windowClosed(e);
             }
         });
