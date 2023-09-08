@@ -12,15 +12,16 @@ class Question:
         else:
             self.correctAnswerIndex = correctAnswerIndex
 
-        def getCorrectAnswer(self) -> str:
-            return self.options[self.correctAnswerIndex]
+    def getCorrectAnswer(self) -> str:
+        return self.options[self.correctAnswerIndex]
         
-        def getOptions(self) -> list[str]:
-            return self.options
+    def getOptions(self) -> list[str]:
+        return self.options
         
-        def getQuestionStatement(Self) -> str:
-            return self.question
+    def getQuestionStatement(self) -> str:
+        return self.question
         
-        def getOptionsSize(self) -> int:
-            return options.__len__() 
+    def getOptionsSize(self) -> int:
+        return self.options.__len__() 
         
+
