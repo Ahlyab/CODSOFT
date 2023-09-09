@@ -28,11 +28,11 @@ class Quiz:
 
         self.addQuestion(Question("What does the 'git' version control system primarily help with?", ["Database management", "Code execution", "Project collaboration", "Source code versioning"], 3))
 
-        # self.addQuestion(Question("Which of the following is not a primitive data type in Python?", ["int", "float", "boolean", "string"], 2))
+        self.addQuestion(Question("Which of the following is not a primitive data type in Python?", ["int", "float", "boolean", "string"], 2))
 
-        # self.addQuestion(Question("What does the acronym 'API' stand for in software development?", ["Application Programming Interface", "Advanced Programming Interface", "Automated Program Integration", "Application Process Integration"], 0))
+        self.addQuestion(Question("What does the acronym 'API' stand for?", ["Application Programming Interface", "Advanced Programming Interface", "Automated Program Integration", "Application Process Integration"], 0))
 
-        # self.addQuestion(Question("In object-oriented programming, what is the term used to describe a blueprint for creating objects?", ["Plan", "Recipe", "Class", "Template"], 2))
+        self.addQuestion(Question("what is the term used to describe a blueprint for creating objects?", ["Plan", "Recipe", "Class", "Template"], 2))
     
 
 class FeedBack:
