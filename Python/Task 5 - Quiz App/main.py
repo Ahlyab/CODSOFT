@@ -28,23 +28,18 @@ class MainApp(QMainWindow, ui):
 
             self.option2.setAutoExclusive(False)
             self.option2.setChecked(False)
-            # self.option2.setAutoExclusive(False)
 
             self.option3.setAutoExclusive(False)
             self.option3.setChecked(False)
-            # self.option3.setAutoExclusive(False)
 
             self.option4.setAutoExclusive(False)
             self.option4.setChecked(False)
-            # self.option4.setAutoExclusive(False)
 
 
             self.option1.setAutoExclusive(True)
             self.option2.setAutoExclusive(True)
             self.option3.setAutoExclusive(True)
             self.option4.setAutoExclusive(True)
-
-
 
             self.current_question = self.quiz.getQuestion()
             self.question.setText(self.current_question.getQuestionStatement())

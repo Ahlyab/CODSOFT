@@ -1,5 +1,3 @@
-# // python class to implement Question that has a statement, 4 options and index of correct answer
-
 class AnswerOutOfBoundException(Exception):
     pass
 
