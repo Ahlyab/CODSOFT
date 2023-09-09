@@ -62,7 +62,7 @@ class MainApp(QMainWindow, ui):
             elif (ans == ""):
                 dlg = QMessageBox(self)
                 dlg.setWindowTitle("Error!")
-                dlg.setText("Please at one option")
+                dlg.setText("Please at least one option")
                 dlg.exec()
                 return
 
