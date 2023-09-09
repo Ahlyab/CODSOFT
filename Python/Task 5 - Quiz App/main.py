@@ -22,17 +22,28 @@ class MainApp(QMainWindow, ui):
             self.submit.clicked.connect(self.btnClicked)
 
         def addQuestion(self):
-            self.option1.setChecked(False)
-            # self.option1.setAutoExclusive(False)
+            self.option1.setAutoExclusive(False)
 
+            self.option1.setChecked(False)
+
+            self.option2.setAutoExclusive(False)
             self.option2.setChecked(False)
             # self.option2.setAutoExclusive(False)
 
+            self.option3.setAutoExclusive(False)
             self.option3.setChecked(False)
             # self.option3.setAutoExclusive(False)
 
+            self.option4.setAutoExclusive(False)
             self.option4.setChecked(False)
             # self.option4.setAutoExclusive(False)
+
+
+            self.option1.setAutoExclusive(True)
+            self.option2.setAutoExclusive(True)
+            self.option3.setAutoExclusive(True)
+            self.option4.setAutoExclusive(True)
+
 
 
             self.current_question = self.quiz.getQuestion()
@@ -45,13 +56,13 @@ class MainApp(QMainWindow, ui):
 
         def btnClicked(self):
             ans = ""
-            if(self.option1.isChecked):
+            if(self.option1.isChecked()):
                  ans = self.option1.text()
-            elif (self.option2.isChecked):
+            elif (self.option2.isChecked()):
                  ans = self.option2.text()
-            elif (self.option3.isChecked):
+            elif (self.option3.isChecked()):
                  ans = self.option3.text()
-            elif (self.option4.isChecked):
+            elif (self.option4.isChecked()):
                  ans = self.option4.text()
             elif (ans == ""):
                 dlg = QMessageBox(self)
@@ -59,7 +70,7 @@ class MainApp(QMainWindow, ui):
                 dlg.setText("Please at one option")
                 dlg.exec()
                 return
-            print(ans)
+
             self.feedback.checkAnswer(self.current_question, ans )
             ans = ""
 
@@ -68,6 +79,7 @@ class MainApp(QMainWindow, ui):
                 dlg.setWindowTitle("Feedback")
                 dlg.setText(self.feedback.generateReport())
                 dlg.exec()
+                QApplication.quit()
                 return
 
             self.addQuestion()
